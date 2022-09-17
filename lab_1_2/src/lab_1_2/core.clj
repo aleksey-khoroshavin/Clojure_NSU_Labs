@@ -2,8 +2,7 @@
   (:gen-class))
 
 (defn generate-word [word alphabet]
-  (loop [alphabet alphabet
-         result ()]
+  ((fn [alphabet result]
     (if (not-empty alphabet)
       (let [current-element (first alphabet)
             current-res (if (not= current-element (first word))
@@ -11,25 +10,23 @@
                                 result)
                           result)]
         (recur (rest alphabet) current-res))
-      result)))
+      result)) alphabet '()))
 
 (defn generate-words [words alphabet]
-  (loop [words words
-         result ()]
+  ((fn [words result]
     (if (not-empty words)
       (recur (rest words)
              (concat result
                      (generate-word (first words)
                                   alphabet)))
-      result)))
+      result)) words '()))
 
 (defn generate-permutations [n alphabet]
-  (loop [n n
-         result '(())]
+  ((fn [n result]
     (if (> n 0)
       (recur (dec n)
              (generate-words result alphabet))
-      result)))
+      result)) n '(())))
 
 (defn -main []
   (println(generate-permutations 2 '(\a \b \c)))
