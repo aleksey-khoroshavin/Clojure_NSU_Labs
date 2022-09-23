@@ -31,5 +31,5 @@
 (defn -main []
   (println(generate-permutations 2 '(\a \b \c)))
   (println(generate-permutations 2 '("a" "b" "c")))
-  (println(generate-permutations 0 '(:a [:b (:c)])))
+  (println(generate-permutations 2 '(:a [:b (:c)])))
   )

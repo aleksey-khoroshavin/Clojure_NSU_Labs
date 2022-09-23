@@ -10,5 +10,4 @@
 (defn -main [& args]
   (println(my-map inc [1 2 3 4 5]))
   (println(my-filter even? (range 10)))
-  (println "My-map and My-filter")
   )
